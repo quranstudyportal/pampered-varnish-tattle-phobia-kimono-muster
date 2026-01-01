@@ -1,0 +1,36 @@
+{
+    "rko": [
+      { "name": "Kuran Tilaveti (Çocuklar)", "count": 63 },
+      { "name": "Kişiye Özgü Dersler", "count": 38 },
+      { "name": "Çocuklar için Kuran Arapçası", "count": 9 },
+      { "name": "Kuran Arapçası", "count": 39 }
+    ],
+
+    "teachers": [
+      { "name": "Abdullah Ihsan ","arrived":  1, "total": 5 },
+      { "name": "Ahmet Selim Demir","arrived":  3, "total": 19 },
+      { "name": "Bekir İnal","arrived":  1, "total": 7 },
+      { "name": "Cafer Aykut","arrived":  14, "total": 22 },
+      { "name": "Dua Boztaş",   "arrived": 4, "total": 8 },
+      { "name": "Emrehan Sağın","arrived":  0, "total": 2 },
+      { "name": "Fatma Eriş","arrived":  0, "total": 4 },
+      { "name": "Güllü Çam","arrived":  5, "total": 26 },
+      { "name": "Hatice Aktaş","arrived":  4, "total": 8 },
+      { "name": "Hümeyra Gökçen","arrived":  1, "total": 3 },
+      { "name": "Leyla kurt","arrived":  1, "total": 4 },
+      { "name": "Meryem Erguvan","arrived":  1, "total": 3 },
+      { "name": "Necmiye Koç",  "arrived": 6, "total": 20 },
+      { "name": "Nilüfer Üner","arrived":  5, "total": 11 },
+      { "name": "Nur Demir","arrived":  4, "total": 11 },
+      { "name": "Rahime Çiğdem","arrived":  11, "total": 29 },
+      { "name": "Seminur Okan","arrived":  10, "total": 14 },
+      { "name": "Vehbi Canarslan","arrived":  1, "total": 13 }
+    ],
+
+    "ris": [
+      { "name": "Islam 101", "count": 0 },
+      { "name": "Ilm al-Hal", "count": 6 },
+      { "name": "Quran in Modern Times", "count": 0 }
+    ]
+  }
+ 

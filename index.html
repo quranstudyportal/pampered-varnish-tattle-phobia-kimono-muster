@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="tr" data-bs-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RKO&RIS Kayıt Takibi</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            transition: background-color 0.3s, color 0.3s;
+            padding-top: 20px;
+            padding-bottom: 50px;
+        }
+        .card {
+            margin-bottom: 20px;
+            border: none;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .header-rko { background-color: #2c3e50; color: white; }
+        .header-ris { background-color: #27ae60; color: white; }
+        .header-teachers { background-color: #8e44ad; color: white; }
+        
+        .total-row {
+            font-weight: bold;
+            background-color: rgba(0,0,0,0.05) !important;
+        }
+        
+        [data-bs-theme="dark"] .total-row {
+            background-color: rgba(255,255,255,0.1) !important;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="fw-bold mb-0">2026 Spring</h1>
+        <button id="themeToggle" class="btn btn-outline-primary">🌙 Dark Mod</button>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header header-rko text-center">
+                    <h4>Kuran Okulu (RKO)</h4>
+                </div>
+                <ul class="list-group list-group-flush" id="rko-list">
+                    <li class="list-group-item text-center">Yükleniyor...</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header header-ris text-center">
+                    <h4>İslam Okulu (RIS)</h4>
+                </div>
+                <ul class="list-group list-group-flush" id="ris-list">
+                    <li class="list-group-item text-center">Yükleniyor...</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="row justify-content-center mt-4">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header header-teachers text-center">
+                    <h4>Öğretmen Kayıt Durumu</h4>
+                </div>
+                <div class="card-body p-0">
+                    <table class="table table-striped table-hover mb-0 text-center">
+                        <thead>
+                            <tr>
+                                <th class="text-start ps-4">Öğretmen İsmi</th>
+                                <th>Kayıt Durumu (Gel/Top)</th>
+                                <th>Başarı Yüzdesi</th>
+                            </tr>
+                        </thead>
+                        <tbody id="teachers-list">
+                            <tr><td colspan="3">Veriler yükleniyor...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    // 1. Render Fonksiyonları (Hesaplama Dahil)
+    function renderSchoolList(schoolData, elementId) {
+        const listContainer = document.getElementById(elementId);
+        if (!schoolData) {
+            listContainer.innerHTML = '<li class="list-group-item text-danger">Veri bulunamadı</li>';
+            return;
+        }
+
+        let totalStudents = 0;
+        let htmlContent = "";
+
+        schoolData.forEach(program => {
+            totalStudents += program.count;
+            htmlContent += `
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    ${program.name}
+                    <span class="badge bg-primary rounded-pill">${program.count}</span>
+                </li>
+            `;
+        });
+
+        htmlContent += `
+            <li class="list-group-item d-flex justify-content-between align-items-center total-row">
+                TOPLAM ÖĞRENCİ
+                <span class="badge bg-dark rounded-pill">${totalStudents}</span>
+            </li>
+        `;
+        listContainer.innerHTML = htmlContent;
+    }
+
+    function renderTeachersTable(teacherData) {
+        const tableBody = document.getElementById('teachers-list');
+        if (!teacherData) {
+            tableBody.innerHTML = '<tr><td colspan="3" class="text-danger">Veri bulunamadı</td></tr>';
+            return;
+        }
+
+        let totalArrived = 0;
+        let totalPossible = 0;
+        let htmlContent = "";
+
+        teacherData.forEach(teacher => {
+            totalArrived += teacher.arrived;
+            totalPossible += teacher.total;
+            
+            let percentage = 0;
+            if(teacher.total > 0) {
+                percentage = ((teacher.arrived / teacher.total) * 100).toFixed(1);
+            }
+
+            let badgeColor = percentage < 25 ? 'bg-danger' : (percentage < 50 ? 'bg-warning text-dark' : 'bg-success');
+
+            htmlContent += `
+                <tr>
+                    <td class="text-start ps-4">${teacher.name}</td>
+                    <td>${teacher.arrived} / ${teacher.total}</td>
+                    <td>
+                        <div class="progress" style="height: 20px;">
+                            <div class="progress-bar ${badgeColor}" role="progressbar" style="width: ${percentage}%" aria-valuenow="${percentage}" aria-valuemin="0" aria-valuemax="100">%${percentage}</div>
+                        </div>
+                    </td>
+                </tr>
+            `;
+        });
+
+        let totalPercentage = 0;
+        if (totalPossible > 0) {
+            totalPercentage = ((totalArrived / totalPossible) * 100).toFixed(1);
+        }
+
+        htmlContent += `
+            <tr class="total-row">
+                <td class="text-start ps-4">GENEL TOPLAM</td>
+                <td><strong>${totalArrived} / ${totalPossible}</strong></td>
+                <td><strong>%${totalPercentage}</strong></td>
+            </tr>
+        `;
+        tableBody.innerHTML = htmlContent;
+    }
+
+    // 2. Fetch ve Başlatma
+    document.addEventListener('DOMContentLoaded', () => {
+        // JSON dosyasını çek
+        fetch('./kayit.json')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP hata: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                renderSchoolList(data.rko, 'rko-list');
+                renderSchoolList(data.ris, 'ris-list');
+                renderTeachersTable(data.teachers);
+            })
+            .catch(error => {
+                console.error('Veri yüklenemedi:', error);
+                document.getElementById('rko-list').innerHTML = `<li class="list-group-item text-danger">Veri yüklenemedi: ${error.message}<br><small>Not: Yerel sunucu kullandığınızdan emin olun.</small></li>`;
+            });
+
+        // Dark Mode Logic
+        const toggleBtn = document.getElementById('themeToggle');
+        const htmlElement = document.documentElement;
+
+        toggleBtn.addEventListener('click', () => {
+            const currentTheme = htmlElement.getAttribute('data-bs-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            htmlElement.setAttribute('data-bs-theme', newTheme);
+            toggleBtn.textContent = newTheme === 'light' ? '🌙 Dark Mod' : '☀️ Light Mod';
+            toggleBtn.classList.toggle('btn-outline-primary');
+            toggleBtn.classList.toggle('btn-outline-warning');
+        });
+    });
+</script>
+
+</body>
+</html>
