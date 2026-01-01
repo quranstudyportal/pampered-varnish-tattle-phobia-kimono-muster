@@ -169,7 +169,7 @@
                 percentage = ((teacher.arrived / teacher.total) * 100).toFixed(1);
             }
 
-            let badgeColor = percentage < 25 ? 'bg-danger' : (percentage < 70 ? 'bg-warning text-dark' : 'bg-success');
+            let badgeColor = percentage < 25 ? 'bg-danger' : (percentage < 60 ? 'bg-warning text-dark' : 'bg-success');
 
             htmlContent += `
                 <tr>
