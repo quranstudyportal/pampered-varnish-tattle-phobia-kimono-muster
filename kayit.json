@@ -29,7 +29,7 @@
 
     "ris": [
       { "name": "Islam 101", "count": 0 },
-      { "name": "Ilm al-Hal", "count": 6 },
+      { "name": "Ilm al-Hal", "count": 7, "new": 7 },
       { "name": "Quran in Modern Times", "count": 0 }
     ]
   }
