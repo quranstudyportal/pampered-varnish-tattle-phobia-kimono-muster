@@ -92,34 +92,63 @@
 <script>
     // 1. Render Fonksiyonları (Hesaplama Dahil)
     function renderSchoolList(schoolData, elementId) {
-        const listContainer = document.getElementById(elementId);
-        if (!schoolData) {
-            listContainer.innerHTML = '<li class="list-group-item text-danger">Veri bulunamadı</li>';
-            return;
-        }
-
-        let totalStudents = 0;
-        let htmlContent = "";
-
-        schoolData.forEach(program => {
-            totalStudents += program.count;
-            htmlContent += `
-                <li class="list-group-item d-flex justify-content-between align-items-center">
-                    ${program.name}
-                    <span class="badge bg-primary rounded-pill">${program.count}</span>
-                </li>
-            `;
-        });
-
-        htmlContent += `
-            <li class="list-group-item d-flex justify-content-between align-items-center total-row">
-                TOPLAM ÖĞRENCİ
-                <span class="badge bg-dark rounded-pill">${totalStudents}</span>
-            </li>
-        `;
-        listContainer.innerHTML = htmlContent;
+    const listContainer = document.getElementById(elementId);
+    if (!schoolData) {
+        listContainer.innerHTML = '<li class="list-group-item text-danger">Veri bulunamadı</li>';
+        return;
     }
 
+    let totalStudents = 0;
+    let htmlContent = "";
+
+    schoolData.forEach(program => {
+        // 1. Verileri Al
+        const totalCount = program.count || 0;     // JSON'daki 'count' (Toplam)
+        const newCount = program.new || 0;         // JSON'daki 'new' (Yeni)
+        
+        // 2. Hesaplma Yap (Eski = Toplam - Yeni)
+        // Eğer yeni sayısı toplamdan büyük girilirse hata olmaması için 0'a eşitle
+        let oldCount = totalCount - newCount;
+        if (oldCount < 0) oldCount = 0;
+
+        totalStudents += totalCount;
+
+        // 3. Yüzdeleri Hesapla
+        let newPercent = totalCount > 0 ? Math.round((newCount / totalCount) * 100) : 0;
+        let oldPercent = totalCount > 0 ? Math.round((oldCount / totalCount) * 100) : 0;
+
+        // 4. HTML Oluştur (Göz yormayan, sağa yaslı tasarım)
+        htmlContent += `
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <span class="fw-medium">${program.name}</span>
+                
+                <div class="d-flex align-items-center">
+                    ${totalCount > 0 ? `
+                    <div class="me-3 text-end" style="font-size: 0.7rem; line-height: 1.1; opacity: 0.8;">
+                        <div class="text-success" title="Yeni Kayıt">
+                            Yeni: <strong>${newCount}</strong> <span class="text-muted">(%${newPercent})</span>
+                        </div>
+                        <div class="text-secondary" title="Devam Eden">
+                            Eski: <strong>${oldCount}</strong> <span class="text-muted">(%${oldPercent})</span>
+                        </div>
+                    </div>
+                    ` : ''}
+
+                    <span class="badge bg-primary rounded-pill" style="min-width: 40px;">${totalCount}</span>
+                </div>
+            </li>
+        `;
+    });
+
+    // Alt Toplam Satırı
+    htmlContent += `
+        <li class="list-group-item d-flex justify-content-between align-items-center total-row">
+            TOPLAM ÖĞRENCİ
+            <span class="badge bg-dark rounded-pill" style="min-width: 40px;">${totalStudents}</span>
+        </li>
+    `;
+    listContainer.innerHTML = htmlContent;
+}
     function renderTeachersTable(teacherData) {
         const tableBody = document.getElementById('teachers-list');
         if (!teacherData) {
