@@ -1,25 +1,25 @@
 {
     "rko": [
-      { "name": "Kuran Tilaveti (Çocuklar)", "count": 117, "new": 38 },
-      { "name": "Kişiye Özgü Dersler", "count": 57, "new": 12 },
+      { "name": "Kuran Tilaveti (Çocuklar)", "count": 124, "new": 39 },
+      { "name": "Kişiye Özgü Dersler", "count": 59, "new": 13 },
       { "name": "Çocuklar için Kuran Arapçası", "count": 11, "new": 2 },
       { "name": "Kuran Arapçası", "count": 56, "new": 0 }
     ],
 
     "teachers": [
       { "name": "Abdullah Ihsan ","arrived":  2, "total": 5 },
-      { "name": "Ahmet Selim Demir","arrived":  11, "total": 19 },
+      { "name": "Ahmet Selim Demir","arrived":  12, "total": 19 },
       { "name": "Bekir İnal","arrived":  2, "total": 7 },
       { "name": "Cafer Aykut","arrived":  14, "total": 22 },
       { "name": "Dua Boztaş",   "arrived": 4, "total": 8 },
       { "name": "Emrehan Sağın","arrived":  1, "total": 2 },
       { "name": "Fatma Eriş","arrived":  0, "total": 4 },
-      { "name": "Güllü Çam","arrived":  17, "total": 26 },
-      { "name": "Hatice Aktaş","arrived":  4, "total": 7 },
+      { "name": "Güllü Çam","arrived":  19, "total": 26 },
+      { "name": "Hatice Aktaş","arrived":  5, "total": 8 },
       { "name": "Hümeyra Gökçen","arrived":  3, "total": 3 },
       { "name": "Leyla kurt","arrived":  3, "total": 4 },
       { "name": "Meryem Erguvan","arrived":  3, "total": 3 },
-      { "name": "Necmiye Koç",  "arrived": 13, "total": 17 },
+      { "name": "Necmiye Koç",  "arrived": 14, "total": 17 },
       { "name": "Nilüfer Üner","arrived":  6, "total": 11 },
       { "name": "Nur Demir","arrived":  9, "total": 11 },
       { "name": "Rahime Çiğdem","arrived":  16, "total": 26 },
