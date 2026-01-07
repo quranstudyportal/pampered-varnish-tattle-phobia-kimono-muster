@@ -8,7 +8,7 @@
 
     "teachers": [
       { "name": "Abdullah Ihsan ","arrived":  2, "total": 5 },
-      { "name": "Ahmet Selim Demir","arrived":  12, "total": 19 },
+      { "name": "Ahmet Selim Demir","arrived":  13, "total": 20 },
       { "name": "Bekir İnal","arrived":  2, "total": 7 },
       { "name": "Cafer Aykut","arrived":  14, "total": 22 },
       { "name": "Dua Boztaş",   "arrived": 4, "total": 8 },
