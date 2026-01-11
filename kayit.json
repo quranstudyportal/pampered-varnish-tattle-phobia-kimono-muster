@@ -7,10 +7,10 @@
     ],
 
     "teachers": [
-      { "name": "Abdullah Ihsan ","arrived":  4, "total": 5 },
-      { "name": "Ahmet Selim Demir","arrived":  14, "total": 20 },
-      { "name": "Bekir İnal","arrived":  6, "total": 7 },
-      { "name": "Cafer Aykut","arrived":  19, "total": 23 },
+      { "name": "Abdullah Ihsan ","arrived":  3, "total": 5 },
+      { "name": "Ahmet Selim Demir","arrived":  12, "total": 20 },
+      { "name": "Bekir İnal","arrived":  3, "total": 7 },
+      { "name": "Cafer Aykut","arrived":  15, "total": 23 },
       { "name": "Dua Boztaş",   "arrived": 4, "total": 6 },
       { "name": "Emrehan Sağın","arrived":  2, "total": 2 },
       { "name": "Fatma Eriş","arrived":  0, "total": 4 },
@@ -24,7 +24,7 @@
       { "name": "Nur Demir","arrived":  9, "total": 11 },
       { "name": "Rahime Çiğdem","arrived":  18, "total": 25 },
       { "name": "Seminur Okan","arrived":  11, "total": 13 },
-      { "name": "Vehbi Canarslan","arrived":  7, "total": 13 }
+      { "name": "Vehbi Canarslan","arrived":  6, "total": 13 }
     ],
 
     "ris": [
