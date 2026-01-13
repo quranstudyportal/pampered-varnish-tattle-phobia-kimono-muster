@@ -1,9 +1,9 @@
 {
     "rko": [
-      { "name": "Kuran Tilaveti (Çocuklar)", "count": 174, "new": 60 },
-      { "name": "Kişiye Özgü Dersler", "count": 61, "new": 13 },
+      { "name": "Kuran Tilaveti (Çocuklar)", "count": 175, "new": 60 },
+      { "name": "Kişiye Özgü Dersler", "count": 64, "new": 14 },
       { "name": "Çocuklar için Kuran Arapçası", "count": 13, "new": 2 },
-      { "name": "Kuran Arapçası", "count": 71, "new": 0 }
+      { "name": "Kuran Arapçası", "count": 74, "new": 0 }
     ],
 
     "teachers": [
@@ -24,7 +24,7 @@
       { "name": "Nur Demir","arrived":  9, "total": 11 },
       { "name": "Rahime Çiğdem","arrived":  18, "total": 25 },
       { "name": "Seminur Okan","arrived":  11, "total": 13 },
-      { "name": "Vehbi Canarslan","arrived":  6, "total": 13 }
+      { "name": "Vehbi Canarslan","arrived":  7, "total": 13 }
     ],
 
     "ris": [
