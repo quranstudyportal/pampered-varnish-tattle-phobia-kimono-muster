@@ -9,48 +9,78 @@
     <style>
         :root { --color-rko: #2c3e50; --color-ris: #27ae60; }
         body { transition: background-color 0.3s, color 0.3s; padding-bottom: 60px; font-family: 'Segoe UI', system-ui, sans-serif; }
-        .top-nav { background: var(--color-rko); color: white; padding: 14px 0; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 12px rgba(0,0,0,0.15); }
-        .top-nav h1 { font-size: 1.3rem; font-weight: 700; margin: 0; letter-spacing: 0.02em; }
-        .top-nav .subtitle { font-size: 0.75rem; opacity: 0.65; margin: 0; }
-        .stat-card { border: none; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); transition: transform 0.2s; }
-        .stat-card:hover { transform: translateY(-2px); }
-        .stat-card .stat-num { font-size: 2rem; font-weight: 700; line-height: 1; }
-        .stat-card .stat-label { font-size: 0.75rem; opacity: 0.65; margin-top: 4px; }
+
+        /* ── NAV ── */
+        .top-nav { background: var(--color-rko); color: white; padding: 12px 0; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 12px rgba(0,0,0,0.15); }
+        .top-nav h1 { font-size: 1.1rem; font-weight: 700; margin: 0; }
+        .top-nav .subtitle { font-size: 0.7rem; opacity: 0.65; margin: 0; }
+
+        /* ── ÖZET KARTLAR ── */
+        .stat-card { border: none; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); }
+        .stat-card .stat-num { font-size: 1.7rem; font-weight: 700; line-height: 1; }
+        .stat-card .stat-label { font-size: 0.68rem; opacity: 0.65; margin-top: 4px; }
+
+        /* ── GRAFİK ── */
         .chart-card { border: none; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
-        .chart-card .card-header { background: transparent; border-bottom: 1px solid rgba(0,0,0,0.07); padding: 16px 20px 12px; }
-        .filter-btn { font-size: 0.78rem; padding: 4px 12px; border-radius: 20px; transition: all 0.2s; }
+        .chart-card .card-header { background: transparent; border-bottom: 1px solid rgba(0,0,0,0.07); padding: 14px 16px 10px; }
+
+        /* ── FİLTRE BUTONLARI ── */
+        .filter-wrap {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 10px;
+        }
+        .filter-btn {
+            font-size: 0.72rem;
+            padding: 5px 10px;
+            border-radius: 20px;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
         .filter-btn.active { background: var(--color-rko); color: white; border-color: var(--color-rko); }
+        [data-bs-theme="dark"] .filter-btn.active { background: #4a90d9; border-color: #4a90d9; }
+
+        /* ── DÖNEM KARTLARI ── */
         .semester-card { border: none; border-radius: 16px; box-shadow: 0 4px 16px rgba(0,0,0,0.08); transition: transform 0.2s, box-shadow 0.2s; text-decoration: none; color: inherit; display: block; overflow: hidden; }
-        .semester-card:hover { transform: translateY(-4px); box-shadow: 0 8px 28px rgba(0,0,0,0.13); color: inherit; }
-        .semester-card .card-top { padding: 20px 22px 14px; }
-        .semester-card .term-label { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.55; }
-        .semester-card .term-name { font-size: 1.35rem; font-weight: 700; margin: 2px 0 0; }
+        .semester-card:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(0,0,0,0.13); color: inherit; }
+        .semester-card .card-top { padding: 16px 18px 12px; }
+        .semester-card .term-label { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.55; }
+        .semester-card .term-name { font-size: 1.2rem; font-weight: 700; margin: 2px 0 0; }
         .semester-card .card-stats { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid rgba(0,0,0,0.06); }
-        .semester-card .cs-item { padding: 12px 22px; border-right: 1px solid rgba(0,0,0,0.06); }
+        .semester-card .cs-item { padding: 10px 18px; border-right: 1px solid rgba(0,0,0,0.06); }
         .semester-card .cs-item:last-child { border-right: none; }
-        .semester-card .cs-num { font-size: 1.4rem; font-weight: 700; line-height: 1; }
-        .semester-card .cs-lbl { font-size: 0.68rem; opacity: 0.55; margin-top: 2px; }
+        .semester-card .cs-num { font-size: 1.3rem; font-weight: 700; line-height: 1; }
+        .semester-card .cs-lbl { font-size: 0.62rem; opacity: 0.55; margin-top: 2px; }
         .semester-card .card-footer-bar { height: 4px; }
         .season-bahar .card-footer-bar { background: linear-gradient(90deg, #2c3e50, #3498db); }
         .season-yaz   .card-footer-bar { background: linear-gradient(90deg, #e67e22, #f39c12); }
         .season-guz   .card-footer-bar { background: linear-gradient(90deg, #8e44ad, #9b59b6); }
         .season-kis   .card-footer-bar { background: linear-gradient(90deg, #1abc9c, #16a085); }
-        .badge-season { font-size: 0.65rem; padding: 3px 8px; border-radius: 10px; font-weight: 600; }
+
+        .badge-season { font-size: 0.62rem; padding: 3px 8px; border-radius: 10px; font-weight: 600; }
         .badge-bahar { background: #e8f4fd; color: #2980b9; }
         .badge-yaz   { background: #fef9e7; color: #e67e22; }
         .badge-guz   { background: #f5eef8; color: #8e44ad; }
         .badge-kis   { background: #e8f8f5; color: #1abc9c; }
+
         .semester-card.upcoming { opacity: 0.55; border: 2px dashed rgba(0,0,0,0.12); box-shadow: none; }
         .semester-card.upcoming:hover { opacity: 0.7; transform: none; box-shadow: none; }
+
+        /* ── DARK MODE ── */
         [data-bs-theme="dark"] .chart-card .card-header { border-color: rgba(255,255,255,0.08); }
         [data-bs-theme="dark"] .semester-card .card-stats { border-color: rgba(255,255,255,0.07); }
         [data-bs-theme="dark"] .semester-card .cs-item { border-color: rgba(255,255,255,0.07); }
-        [data-bs-theme="dark"] .filter-btn.active { background: #4a90d9; border-color: #4a90d9; }
         [data-bs-theme="dark"] .badge-bahar { background: #1a3a5c; color: #7ec8e3; }
         [data-bs-theme="dark"] .badge-yaz   { background: #3d2a0a; color: #f5a623; }
         [data-bs-theme="dark"] .badge-guz   { background: #2d1a40; color: #c39bd3; }
         [data-bs-theme="dark"] .semester-card.upcoming { border-color: rgba(255,255,255,0.15); }
-        .section-title { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.45; margin-bottom: 14px; }
+
+        .section-title { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.45; margin-bottom: 12px; }
+
+        /* ── MOBİL GRAFIK YÜKSEKLİĞİ ── */
+        .chart-canvas-wrap { height: 260px; }
+        @media (min-width: 768px) { .chart-canvas-wrap { height: 320px; } }
     </style>
 </head>
 <body>
@@ -65,61 +95,64 @@
     </div>
 </nav>
 
-<div class="container mt-4">
+<div class="container mt-3">
 
     <!-- ÖZET BANDI -->
-    <div class="row g-3 mb-4">
-        <div class="col-6 col-md-4">
-            <div class="stat-card card p-3 text-center">
+    <div class="row g-2 mb-3">
+        <div class="col-4">
+            <div class="stat-card card p-2 p-md-3 text-center">
                 <div class="stat-num text-primary" id="stat-total">—</div>
                 <div class="stat-label">Toplam Öğrenci</div>
             </div>
         </div>
-        <div class="col-6 col-md-4">
-            <div class="stat-card card p-3 text-center">
+        <div class="col-4">
+            <div class="stat-card card p-2 p-md-3 text-center">
                 <div class="stat-num text-success" id="stat-new">—</div>
-                <div class="stat-label">Yeni Kayıt (Son Dönem)</div>
+                <div class="stat-label">Yeni Kayıt</div>
             </div>
         </div>
-        <div class="col-6 col-md-4">
-            <div class="stat-card card p-3 text-center">
+        <div class="col-4">
+            <div class="stat-card card p-2 p-md-3 text-center">
                 <div class="stat-num text-warning" id="stat-teacher-rate">—</div>
-                <div class="stat-label">Total Kayıt Yineleme (Son Dönem)</div>
+                <div class="stat-label">Kayıt Yineleme</div>
             </div>
         </div>
     </div>
 
     <!-- GRAFİK -->
-    <div class="chart-card card mb-5">
-        <div class="card-header d-flex flex-wrap justify-content-between align-items-center gap-2">
-            <div>
-                <h6 class="mb-0 fw-bold">Program Bazlı Dönem Karşılaştırması</h6>
-                <small class="opacity-50">Kayıt sayıları dönemlere göre</small>
-            </div>
-            <div class="d-flex flex-wrap gap-2 align-items-center">
-                <div class="d-flex gap-1" id="program-filters"></div>
-                <div class="vr mx-1 d-none d-md-block"></div>
-                <div class="d-flex gap-1">
+    <div class="chart-card card mb-4">
+        <div class="card-header">
+            <div class="d-flex justify-content-between align-items-start">
+                <div>
+                    <h6 class="mb-0 fw-bold" style="font-size:0.9rem;">Program Bazlı Karşılaştırma</h6>
+                    <small class="opacity-50" style="font-size:0.7rem;">Kayıt sayıları dönemlere göre</small>
+                </div>
+                <!-- Okul filtresi -->
+                <div class="d-flex gap-1 ms-2 flex-shrink-0">
                     <button class="filter-btn btn btn-sm btn-outline-secondary active" data-school="all">Tümü</button>
                     <button class="filter-btn btn btn-sm btn-outline-secondary" data-school="rko">RKO</button>
                     <button class="filter-btn btn btn-sm btn-outline-secondary" data-school="ris">RIS</button>
                 </div>
             </div>
+            <!-- Program filtreleri — alt satırda, wrap eder -->
+            <div class="filter-wrap" id="program-filters"></div>
         </div>
-        <div class="card-body" style="height: 320px;">
-            <canvas id="mainChart"></canvas>
+        <div class="card-body p-2 p-md-3">
+            <div class="chart-canvas-wrap">
+                <canvas id="mainChart"></canvas>
+            </div>
         </div>
     </div>
 
     <!-- DÖNEM KARTLARI -->
     <div class="section-title">Dönemler</div>
-    <div class="row g-4" id="semester-grid"></div>
+    <div class="row g-3" id="semester-grid"></div>
 
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-// ── DÖNEM TANIMI — Yeni dönem eklemek için buraya obje ekle ──────
+// ── DÖNEM TANIMI ─────────────────────────────────────────────────
 const SEMESTERS = [
     { id: '2026-bahar', label: '2026 Bahar', season: 'bahar', year: 2026, url: './2026-bahar/index.html', dataUrl: './2026-bahar/kayit.json' },
     { id: '2026-yaz',   label: '2026 Yaz',   season: 'yaz',   year: 2026, url: './2026-yaz/index.html',   dataUrl: './2026-yaz/kayit.json'   },
@@ -128,7 +161,6 @@ const SEMESTERS = [
 
 let allData = {}, chart = null, activeSchool = 'all', activePrograms = new Set();
 
-// ── VERİ YÜKLEME ─────────────────────────────────────────────────
 async function loadAllData() {
     const results = await Promise.all(
         SEMESTERS.filter(s => s.dataUrl).map(s =>
@@ -141,7 +173,6 @@ async function loadAllData() {
     results.forEach(r => { if (r.data) allData[r.id] = r.data; });
 }
 
-// ── TÜM PROGRAM İSİMLERİ ────────────────────────────────────────
 function getAllPrograms() {
     const programs = new Set();
     Object.values(allData).forEach(d => {
@@ -151,70 +182,58 @@ function getAllPrograms() {
     return [...programs];
 }
 
-// ── ÖZET BANDI — verisi olan son dönemi esas alır ────────────────
 function updateSummary() {
     const loaded = SEMESTERS.filter(s => allData[s.id]);
     const lastData = loaded.length ? allData[loaded[loaded.length - 1].id] : null;
-
     let totalStudents = 0, newStudents = 0, arrived = 0, teacherTotal = 0;
     if (lastData) {
         [...(lastData.rko || []), ...(lastData.ris || [])].forEach(p => {
             totalStudents += p.count || 0;
             newStudents   += p.new   || 0;
         });
-        (lastData.teachers || []).forEach(t => {
-            arrived      += t.arrived;
-            teacherTotal += t.total;
-        });
+        (lastData.teachers || []).forEach(t => { arrived += t.arrived; teacherTotal += t.total; });
     }
-
     document.getElementById('stat-total').textContent        = totalStudents || '—';
     document.getElementById('stat-new').textContent          = newStudents   || '—';
     document.getElementById('stat-teacher-rate').textContent = teacherTotal > 0 ? `%${Math.round(arrived / teacherTotal * 100)}` : '—';
 }
 
-// ── GRAFİK ──────────────────────────────────────────────────────
 function renderChart() {
     const ctx = document.getElementById('mainChart').getContext('2d');
     if (chart) chart.destroy();
-
     const isDark    = document.documentElement.getAttribute('data-bs-theme') === 'dark';
     const gridColor = isDark ? 'rgba(255,255,255,0.07)' : 'rgba(0,0,0,0.06)';
     const textColor = isDark ? 'rgba(255,255,255,0.6)'  : 'rgba(0,0,0,0.5)';
     const labels    = SEMESTERS.filter(s => allData[s.id]).map(s => s.label);
     const programs  = getAllPrograms().filter(p => activePrograms.size === 0 || activePrograms.has(p));
-
-    const datasets = programs.map((prog, i) => {
+    const datasets  = programs.map((prog, i) => {
         const hue  = (i * 47 + 180) % 360;
         const data = SEMESTERS.filter(s => allData[s.id]).map(s => {
-            const d = allData[s.id];
-            let src = [];
+            const d = allData[s.id]; let src = [];
             if (activeSchool === 'all' || activeSchool === 'rko') src.push(...(d.rko || []));
             if (activeSchool === 'all' || activeSchool === 'ris') src.push(...(d.ris || []));
             const found = src.find(p => p.name === prog);
             return found ? (found.count || 0) : 0;
         });
-        return { label: prog, data, backgroundColor: `hsla(${hue},65%,52%,0.75)`, borderColor: `hsla(${hue},65%,40%,1)`, borderWidth: 1.5, borderRadius: 6 };
+        return { label: prog, data, backgroundColor: `hsla(${hue},65%,52%,0.75)`, borderColor: `hsla(${hue},65%,40%,1)`, borderWidth: 1.5, borderRadius: 4 };
     });
-
     chart = new Chart(ctx, {
         type: 'bar',
         data: { labels, datasets },
         options: {
             responsive: true, maintainAspectRatio: false,
             plugins: {
-                legend: { position: 'bottom', labels: { color: textColor, boxWidth: 12, padding: 14, font: { size: 11 } } },
+                legend: { position: 'bottom', labels: { color: textColor, boxWidth: 10, padding: 10, font: { size: 10 } } },
                 tooltip: { callbacks: { label: c => ` ${c.dataset.label}: ${c.raw} öğrenci` } }
             },
             scales: {
-                x: { grid: { color: gridColor }, ticks: { color: textColor } },
-                y: { beginAtZero: true, grid: { color: gridColor }, ticks: { color: textColor, stepSize: 20 } }
+                x: { grid: { color: gridColor }, ticks: { color: textColor, font: { size: 11 } } },
+                y: { beginAtZero: true, grid: { color: gridColor }, ticks: { color: textColor, stepSize: 20, font: { size: 11 } } }
             }
         }
     });
 }
 
-// ── PROGRAM FİLTRE BUTONLARI ─────────────────────────────────────
 function buildProgramFilters() {
     const container = document.getElementById('program-filters');
     container.innerHTML = '';
@@ -231,26 +250,21 @@ function buildProgramFilters() {
     });
 }
 
-// ── DÖNEM KARTLARI ───────────────────────────────────────────────
 function buildSemesterCards() {
     const grid = document.getElementById('semester-grid');
     grid.innerHTML = '';
     const seasonNames = { bahar: 'Bahar', yaz: 'Yaz', guz: 'Güz', kis: 'Kış' };
-
     SEMESTERS.forEach(s => {
         const data = allData[s.id];
         let totalStudents = 0, teacherArrived = 0, teacherTotal = 0;
-
         if (data) {
             [...(data.rko || []), ...(data.ris || [])].forEach(p => totalStudents += (p.count || 0));
             (data.teachers || []).forEach(t => { teacherArrived += t.arrived; teacherTotal += t.total; });
         }
-
         const teacherRate = teacherTotal > 0 ? Math.round(teacherArrived / teacherTotal * 100) : 0;
         const isUpcoming  = !s.dataUrl;
-
         const col = document.createElement('div');
-        col.className = 'col-md-4 col-sm-6';
+        col.className = 'col-6 col-md-4';
         col.innerHTML = `
             <a href="${s.url}" class="semester-card season-${s.season}${isUpcoming ? ' upcoming' : ''}">
                 <div class="card-top">
@@ -259,12 +273,12 @@ function buildSemesterCards() {
                         <span class="badge-season badge-${s.season}">${seasonNames[s.season] || s.season}</span>
                     </div>
                     <div class="term-name">${s.label}</div>
-                    ${isUpcoming ? '<div style="font-size:0.75rem;opacity:0.5;margin-top:6px;">Yakında</div>' : ''}
+                    ${isUpcoming ? '<div style="font-size:0.72rem;opacity:0.5;margin-top:4px;">Yakında</div>' : ''}
                 </div>
                 ${data ? `
                 <div class="card-stats">
                     <div class="cs-item"><div class="cs-num">${totalStudents}</div><div class="cs-lbl">Öğrenci</div></div>
-                    <div class="cs-item"><div class="cs-num">%${teacherRate}</div><div class="cs-lbl">Total Kayıt Yineleme</div></div>
+                    <div class="cs-item"><div class="cs-num">%${teacherRate}</div><div class="cs-lbl">Kayıt Yineleme</div></div>
                 </div>` : ''}
                 <div class="card-footer-bar"></div>
             </a>`;
@@ -272,7 +286,6 @@ function buildSemesterCards() {
     });
 }
 
-// ── OKUL FİLTRE BUTONLARI ────────────────────────────────────────
 document.querySelectorAll('[data-school]').forEach(btn => {
     btn.addEventListener('click', () => {
         document.querySelectorAll('[data-school]').forEach(b => b.classList.remove('active'));
@@ -282,7 +295,6 @@ document.querySelectorAll('[data-school]').forEach(btn => {
     });
 });
 
-// ── DARK MODE ────────────────────────────────────────────────────
 document.getElementById('themeToggle').addEventListener('click', () => {
     const t = document.documentElement.getAttribute('data-bs-theme') === 'light' ? 'dark' : 'light';
     document.documentElement.setAttribute('data-bs-theme', t);
@@ -290,7 +302,6 @@ document.getElementById('themeToggle').addEventListener('click', () => {
     renderChart();
 });
 
-// ── BAŞLAT ───────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', async () => {
     await loadAllData();
     updateSummary();
