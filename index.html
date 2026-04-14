@@ -185,7 +185,7 @@
 <div class="container mt-4">
 
     <!-- ÖZET BANDINI -->
-    <div class="row g-3 mb-4" id="summary-stats">
+    <div class="row g-3 mb-3" id="summary-stats">
         <div class="col-6 col-md-3">
             <div class="stat-card card p-3 text-center">
                 <div class="stat-num text-primary" id="stat-total">—</div>
@@ -202,12 +202,6 @@
             <div class="stat-card card p-3 text-center">
                 <div class="stat-num text-warning" id="stat-teacher-rate">—</div>
                 <div class="stat-label">Total Kayıt Yineleme (Son Dönem)</div>
-            </div>
-        </div>
-        <div class="col-6 col-md-3">
-            <div class="stat-card card p-3 text-center">
-                <div class="stat-num" id="stat-semesters">2</div>
-                <div class="stat-label">Aktif Dönem</div>
             </div>
         </div>
     </div>
@@ -265,7 +259,7 @@ const SEMESTERS = [
         year: 2026,
         url: './2026-yaz/index.html',
         dataUrl: './2026-yaz/kayit.json',
-        status: 'upcoming'
+        status: 'active'
     },
     {
         id: '2026-guz',
@@ -477,7 +471,7 @@ function buildSemesterCards() {
                     <div class="term-name">${s.label}</div>
                     ${isUpcoming ? '<div style="font-size:0.75rem;opacity:0.5;margin-top:6px;">Yakında</div>' : ''}
                 </div>
-                ${!isUpcoming && data ? `
+                ${data ? `
                 <div class="card-stats">
                     <div class="cs-item">
                         <div class="cs-num">${totalStudents}</div>
