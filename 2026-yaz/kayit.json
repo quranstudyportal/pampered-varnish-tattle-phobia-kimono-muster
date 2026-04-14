@@ -1,9 +1,9 @@
 {
     "rko": [
-      { "name": "Kuran Tilaveti (Çocuklar)", "count": 0, "new": 0 },
-      { "name": "Kişiye Özgü Dersler", "count": 0, "new": 0 },
-      { "name": "Çocuklar için Kuran Arapçası", "count": 0, "new": 0 },
-      { "name": "Kuran Arapçası", "count": 0, "new": 0 }
+      { "name": "Kuran Tilaveti (Çocuklar)", "count": 8, "new": 5 },
+      { "name": "Kişiye Özgü Dersler", "count": 29, "new": 22 },
+      { "name": "Çocuklar için Kuran Arapçası", "count": 2, "new": 2 },
+      { "name": "Kuran Arapçası", "count": 14}
     ],
     "teachers": [
       { "name": "Abdullah Ihsan", "arrived": 0, "total": 0 },
@@ -27,7 +27,6 @@
     ],
     "ris": [
       { "name": "Islam 101", "count": 0 },
-      { "name": "Ilm al-Hal", "count": 0, "new": 0 },
       { "name": "Quran in Modern Times", "count": 0 }
     ]
 }
