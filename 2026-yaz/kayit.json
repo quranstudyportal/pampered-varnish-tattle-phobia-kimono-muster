@@ -1,16 +1,16 @@
 {
     "rko": [
-      { "name": "Kuran Tilaveti (Çocuklar)", "count": 30, "new": 13 },
-      { "name": "Kişiye Özgü Dersler", "count": 22, "new": 6 },
+      { "name": "Kuran Tilaveti (Çocuklar)", "count": 35, "new": 14 },
+      { "name": "Kişiye Özgü Dersler", "count": 23, "new": 6 },
       { "name": "One on One Quran Classes", "count": 3, "new": 2 },
-      { "name": "Çocuklar için Kuran Arapçası", "count": 3, "new": 2 },
+      { "name": "Çocuklar için Kuran Arapçası", "count": 5, "new": 4 },
       { "name": "Kuran Arapçası", "count": 15}
     ],
     "teachers": [
       { "name": "Abdullah Ihsan", "arrived": 0, "total": 6 },
       { "name": "Abdurrahman Cellek", "arrived": 0, "total": 3 },
-      { "name": "Ahmet Selim Demir", "arrived": 0, "total": 21 },
-      { "name": "Bekir İnal", "arrived": 0, "total": 6 },
+      { "name": "Ahmet Selim Demir", "arrived": 1, "total": 21 },
+      { "name": "Bekir İnal", "arrived": 1, "total": 6 },
       { "name": "Bahar Demir", "arrived": 0, "total": 10 },
       { "name": "Cafer Aykut", "arrived": 8, "total": 26 },
       { "name": "Dua Boztaş", "arrived": 1, "total": 5 },
@@ -23,12 +23,12 @@
       { "name": "Meryem Erguvan", "arrived": 0, "total": 6 },
       { "name": "Necmiye Koç", "arrived": 0, "total": 10 },
       { "name": "Nilüfer Üner", "arrived": 1, "total": 14 },
-      { "name": "Nur Demir", "arrived": 0, "total": 23 },
+      { "name": "Nur Demir", "arrived": 1, "total": 23 },
       { "name": "Osman Alakbarlı", "arrived": 0, "total": 1 },
       { "name": "Ömer Yılmaz", "arrived": 0, "total": 1 },
       { "name": "Rahime Çiğdem", "arrived": 9, "total": 28 },
       { "name": "Ufuk Kucuk", "arrived": 0, "total": 2 },
-      { "name": "Seminur Okan", "arrived": 9, "total": 12 },
+      { "name": "Seminur Okan", "arrived": 10, "total": 12 },
       { "name": "Vehbi Canarslan", "arrived": 0, "total": 11 }
     ],
     "ris": [
