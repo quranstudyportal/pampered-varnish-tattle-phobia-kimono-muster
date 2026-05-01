@@ -1,10 +1,10 @@
 {
     "rko": [
-      { "name": "Kuran Tilaveti (Çocuklar)", "count": 35, "new": 14 },
-      { "name": "Kişiye Özgü Dersler", "count": 23, "new": 6 },
+      { "name": "Kuran Tilaveti (Çocuklar)", "count": 44, "new": 15 },
+      { "name": "Kişiye Özgü Dersler", "count": 26, "new": 1 },
       { "name": "One on One Quran Classes", "count": 3, "new": 2 },
-      { "name": "Çocuklar için Kuran Arapçası", "count": 5, "new": 4 },
-      { "name": "Kuran Arapçası", "count": 15}
+      { "name": "Çocuklar için Kuran Arapçası", "count": 7, "new": 5 },
+      { "name": "Kuran Arapçası", "count": 30}
     ],
     "teachers": [
       { "name": "Abdullah Ihsan", "arrived": 0, "total": 6 },
