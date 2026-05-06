@@ -4,7 +4,7 @@
       { "name": "Kişiye Özgü Dersler", "count": 42, "new": 7 },
       { "name": "One on One Quran Classes", "count": 4, "new": 2 },
       { "name": "Çocuklar için Kuran Arapçası", "count": 9, "new": 6 },
-      { "name": "Kuran Arapçası", "count": 35}
+      { "name": "Kuran Arapçası", "count": 38}
     ],
     "teachers": [
       { "name": "Abdullah Ihsan", "arrived": 1, "total": 6 },
