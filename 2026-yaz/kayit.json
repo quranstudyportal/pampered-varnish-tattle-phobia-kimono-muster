@@ -8,10 +8,10 @@
       { "name": "Kuran Öğreticilği", "count": 3}
     ],
     "teachers": [
-      { "name": "Abdullah Ihsan", "arrived": 1, "total": 6 },
+      { "name": "Abdullah Ihsan", "arrived": 1, "total": 5 },
       { "name": "Abdurrahman Cellek", "arrived": 0, "total": 3 },
       { "name": "Ahmet Selim Demir", "arrived": 11, "total": 20 },
-      { "name": "Bekir İnal", "arrived": 5, "total": 9 },
+      { "name": "Bekir İnal", "arrived": 5, "total": 7 },
       { "name": "Bahar Demir", "arrived": 5, "total": 9 },
       { "name": "Cafer Aykut", "arrived": 12, "total": 25 },
       { "name": "Dua Boztaş", "arrived": 3, "total": 5 },
