@@ -1,30 +1,30 @@
 {
     "rko": [
-      { "name": "Kuran Tilaveti (Çocuklar)", "count": 86, "new": 28 },
-      { "name": "Kişiye Özgü Dersler", "count": 31, "new": 14 },
-      { "name": "One on One Quran Classes", "count": 0, "new": 0 },
+      { "name": "Kuran Tilaveti (Çocuklar)", "count": 107, "new": 32 },
+      { "name": "Kişiye Özgü Dersler", "count": 35, "new": 15 },
+      { "name": "One on One Quran Classes", "count": 1, "new": 1 },
       { "name": "Çocuklar için Kuran Arapçası", "count": 0, "new": 0 },
       { "name": "Kuran Arapçası", "count": 17, "new": 0 }
     ],
     "teachers": [
       { "name": "Abdullah Ihsan", "arrived": 2, "total": 5 },
-      { "name": "Ahmet Selim Demir", "arrived": 6, "total": 31 },
+      { "name": "Ahmet Selim Demir", "arrived": 10, "total": 31 },
       { "name": "Bahar Demir", "arrived": 4, "total": 14 },
-      { "name": "Bekir İnal", "arrived": 5, "total": 11 },
+      { "name": "Bekir İnal", "arrived": 6, "total": 10 },
       { "name": "Cafer Aykut", "arrived": 2, "total": 23 },
       { "name": "Dua Boztaş", "arrived": 1, "total": 3 },
       { "name": "Emrehan Sağın", "arrived": 0, "total": 2 },
       { "name": "Esmanur Çelebi", "arrived": 0, "total": 1 },
-      { "name": "Güllü Çam", "arrived": 9, "total": 21 },
-      { "name": "Hatice Aktaş", "arrived": 4, "total": 7 },
+      { "name": "Güllü Çam", "arrived": 12, "total": 23 },
+      { "name": "Hatice Aktaş", "arrived": 5, "total": 7 },
       { "name": "Leyla Kurt", "arrived": 0, "total": 2 },
-      { "name": "Meryem Erguvan", "arrived": 2, "total": 10 },
-      { "name": "Necmiye Koç", "arrived": 3, "total": 17 },
+      { "name": "Meryem Erguvan", "arrived": 3, "total": 10 },
+      { "name": "Necmiye Koç", "arrived": 4, "total": 6 },
       { "name": "Nilüfer Üner", "arrived": 3, "total": 11 },
       { "name": "Nur Demir", "arrived": 3, "total": 21 },
       { "name": "Rahime Çiğdem", "arrived": 13, "total": 27 },
       { "name": "Seminur Okan", "arrived": 6, "total": 12 },
-      { "name": "Vehbi Canarslan", "arrived": 2, "total": 4 }
+      { "name": "Vehbi Canarslan", "arrived": 3, "total": 4 }
     ],
     "ris": [
       { "name": "Islam 101", "count": 0, "new": 0 },
