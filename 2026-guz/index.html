@@ -12,62 +12,87 @@
            yüzde eşiklerinin (bg-danger/bg-warning/bg-success) mantığı
            değişmeden rengi temaya uyar. */
         :root {
-            --c-brand:        #2c3e50;   /* ana marka — nav, RKO başlığı, aktif filtre */
-            --c-brand-2:      #3498db;   /* marka gradyan ucu */
-            --c-accent:       #8e44ad;   /* ikincil vurgu — öğretmen başlığı */
-            --c-accent-2:     #9b59b6;
+            --c-brand:        #25375F;   /* ana marka — nav, RKO başlığı, aktif filtre */
+            --c-brand-2:      #339999;   /* marka gradyan ucu */
+            --c-accent:       #B85C38;   /* ikincil vurgu — öğretmen başlığı */
+            --c-accent-2:     #2E2219;
 
-            --c-ok:           #198754;   /* yüzde ≥70 ve "Yeni" satırı */
-            --c-warn:         #ffc107;   /* yüzde 25–70 */
-            --c-bad:          #dc3545;   /* yüzde <25 */
-            --c-scholar:      #997404;   /* burslu satırı */
+            --c-ok:           #7A9155;   /* yüzde ≥70 ve "Yeni" satırı */
+            --c-warn:         #B57F24;   /* yüzde 25–70 */
+            --c-bad:          #D9644A;   /* yüzde <25 */
+            --c-scholar:      #8A5E12;   /* burslu satırı */
 
-            --c-border:       rgba(0,0,0,0.06);
-            --c-border-2:     rgba(0,0,0,0.12);
-            --c-shadow:       rgba(0,0,0,0.08);
-            --c-shadow-lg:    rgba(0,0,0,0.13);
-            --c-zebra:        rgba(0,0,0,0.05);
-            --c-ink-soft:     rgba(0,0,0,0.5);
+            --c-bg:           #F4F1EB;   /* sayfa zemini */
+            --c-surface:      #FAF9F6;   /* kart zemini */
+            --c-text:         #25375F;
+
+            --c-border:       rgba(37,55,95,0.10);
+            --c-border-2:     rgba(37,55,95,0.22);
+            --c-shadow:       rgba(37,55,95,0.06);
+            --c-shadow-lg:    rgba(37,55,95,0.14);
+            --c-zebra:        rgba(37,55,95,0.045);
+            --c-ink-soft:     rgba(37,55,95,0.55);
 
             /* Mevsim aksanları */
-            --c-bahar:   #2c3e50;  --c-bahar-2: #3498db;
-            --c-yaz:     #e67e22;  --c-yaz-2:   #f39c12;
-            --c-guz:     #8e44ad;  --c-guz-2:   #9b59b6;
-            --c-kis:     #1abc9c;  --c-kis-2:   #16a085;
-            --c-bahar-bg: #e8f4fd; --c-bahar-fg: #2980b9;
-            --c-yaz-bg:   #fef9e7; --c-yaz-fg:   #e67e22;
-            --c-guz-bg:   #f5eef8; --c-guz-fg:   #8e44ad;
-            --c-kis-bg:   #e8f8f5; --c-kis-fg:   #1abc9c;
+            --c-bahar:   #6B7C51;  --c-bahar-2: #C5D098;
+            --c-yaz:     #C8922F;  --c-yaz-2:   #F4C430;
+            --c-guz:     #B85C38;  --c-guz-2:   #F0A57D;
+            --c-kis:     #25375F;  --c-kis-2:   #3AADA3;
+            --c-bahar-bg: #E8EDDF; --c-bahar-fg: #3F4C2C;
+            --c-yaz-bg:   #FAEFD5; --c-yaz-fg:   #6B4A0E;
+            --c-guz-bg:   #F7E4DA; --c-guz-fg:   #7A3418;
+            --c-kis-bg:   #DCEDEB; --c-kis-fg:   #17544F;
 
             /* Grafik serileri — program sayısı kadar sırayla kullanılır */
-            --c-series-1: #2c3e50;
-            --c-series-2: #3498db;
-            --c-series-3: #8e44ad;
-            --c-series-4: #e67e22;
-            --c-series-5: #1abc9c;
-            --c-series-6: #c0392b;
-            --c-series-7: #7f8c8d;
-            --c-series-8: #f1c40f;
+            --c-series-1: #25375F;
+            --c-series-2: #3AADA3;
+            --c-series-3: #B85C38;
+            --c-series-4: #C8922F;
+            --c-series-5: #6B7C51;
+            --c-series-6: #D4B896;
+            --c-series-7: #56D8CC;
+            --c-series-8: #33404E;
 
-            /* Bootstrap köprüsü — semantik sınıflar temaya uyar */
-            --bs-primary: var(--c-brand);
-            --bs-success: var(--c-ok);
-            --bs-warning: var(--c-warn);
-            --bs-danger:  var(--c-bad);
+            /* Bootstrap köprüsü — utility sınıfları -rgb değişkenlerini okur,
+               bu yüzden hem düz hem rgb biçimi tanımlanır. Yüzde eşiklerinin
+               mantığı değişmez, yalnızca renkleri palete döner. */
+            --bs-primary: var(--c-brand);      --bs-primary-rgb: 37,55,95;
+            --bs-success: var(--c-ok);         --bs-success-rgb: 122,145,85;
+            --bs-warning: var(--c-warn);       --bs-warning-rgb: 181,127,36;
+            --bs-danger:  var(--c-bad);        --bs-danger-rgb:  217,100,74;
+            --bs-dark:    var(--c-brand);      --bs-dark-rgb:    37,55,95;
+            --bs-secondary-color: var(--c-ink-soft);
+            --bs-body-bg: var(--c-bg);         --bs-body-bg-rgb: 244,241,235;
+            --bs-body-color: var(--c-text);    --bs-body-color-rgb: 37,55,95;
+            --bs-emphasis-color-rgb: 37,55,95;
+            --bs-border-color: var(--c-border-2);
         }
         [data-bs-theme="dark"] {
-            --c-border:    rgba(255,255,255,0.07);
-            --c-border-2:  rgba(255,255,255,0.15);
-            --c-shadow:    rgba(0,0,0,0.4);
-            --c-shadow-lg: rgba(0,0,0,0.55);
-            --c-zebra:     rgba(255,255,255,0.1);
-            --c-ink-soft:  rgba(255,255,255,0.6);
-            --c-scholar:   #ffda6a;
-            --c-bahar-bg: #1a3a5c; --c-bahar-fg: #7ec8e3;
-            --c-yaz-bg:   #3d2a0a; --c-yaz-fg:   #f5a623;
-            --c-guz-bg:   #2d1a40; --c-guz-fg:   #c39bd3;
-            --c-kis-bg:   #0e3b33; --c-kis-fg:   #76d7c4;
+            --c-bg:        #25375F;
+            --c-surface:   #33404E;
+            --c-text:      #F4F1EB;
+            --c-border:    rgba(244,241,235,0.16);
+            --c-border-2:  rgba(244,241,235,0.32);
+            --c-shadow:    rgba(26,37,64,0.42);
+            --c-shadow-lg: rgba(26,37,64,0.60);
+            --c-zebra:     rgba(244,241,235,0.08);
+            --c-ink-soft:  rgba(244,241,235,0.55);
+            --c-scholar:   #F4C430;
+            --c-bahar-bg: #2A3328; --c-bahar-fg: #C5D098;
+            --c-yaz-bg:   #3A2A0C; --c-yaz-fg:   #F4C430;
+            --c-guz-bg:   #3A241A; --c-guz-fg:   #F0A57D;
+            --c-kis-bg:   #14343B; --c-kis-fg:   #56D8CC;
+
+            --bs-body-bg-rgb: 37,55,95;
+            --bs-body-color-rgb: 244,241,235;
+            --bs-emphasis-color-rgb: 244,241,235;
+            --bs-dark: #1A2540;    --bs-dark-rgb: 26,37,64;
+            /* Koyu zeminle çakışan iki seri, sitenin -on-dark yöntemiyle açıldı */
+            --c-series-1: #8FA8D8;
+            --c-series-8: #A9B4C4;
         }
+        /* Kart zemini sayfadan bir ton ayrışır (Paper White / Slate Blue) */
+        .card { background-color: var(--c-surface); }
         body {
             transition: background-color 0.3s, color 0.3s;
             padding-top: 20px;
