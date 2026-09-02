@@ -60,7 +60,7 @@
             --bs-success: var(--c-ok);         --bs-success-rgb: 122,145,85;
             --bs-warning: var(--c-warn);       --bs-warning-rgb: 181,127,36;
             --bs-danger:  var(--c-bad);        --bs-danger-rgb:  217,100,74;
-            --bs-dark:    var(--c-brand);      --bs-dark-rgb:    37,55,95;
+            --bs-dark:    #1A2540;             --bs-dark-rgb:    26,37,64;
             --bs-secondary-color: var(--c-ink-soft);
             --bs-body-bg: var(--c-bg);         --bs-body-bg-rgb: 244,241,235;
             --bs-body-color: var(--c-text);    --bs-body-color-rgb: 37,55,95;
@@ -91,8 +91,67 @@
             --c-series-1: #8FA8D8;
             --c-series-8: #A9B4C4;
         }
-        /* Kart zemini sayfadan bir ton ayrışır (Paper White / Slate Blue) */
-        .card { background-color: var(--c-surface); }
+        /* ── BOOTSTRAP YÜZEYLERİ ──────────────────────────────────────
+           Bootstrap'in derlenmiş bileşenleri (butonlar, liste, tablo,
+           progress) kendi --bs-* değişkenlerini okur; hepsi token'lara
+           bağlandı ki palet dışında hiçbir yüzey kalmasın. */
+        :root {
+            --c-on-brand: #F4F1EB;   /* koyu marka zeminler üstündeki metin */
+
+            --c-ok-text: #54613F;    /* "Yeni" satırı — metin boyu kontrast */
+            --bs-secondary-rgb: 101,113,140;
+            --bs-emphasis-color: var(--c-text);
+        }
+        [data-bs-theme="dark"] {
+            --c-ok-text: #C5D098;
+            --bs-secondary-rgb: 176,183,199;
+        }
+        .card       { --bs-card-bg: var(--c-surface); --bs-card-border-color: var(--c-border); }
+        .list-group { --bs-list-group-bg: var(--c-surface); --bs-list-group-color: var(--c-text);
+                      --bs-list-group-border-color: var(--c-border);
+                      --bs-list-group-action-hover-bg: var(--c-zebra); }
+        .table      { --bs-table-color: var(--c-text); --bs-table-bg: transparent;
+                      --bs-table-striped-color: var(--c-text); --bs-table-striped-bg: var(--c-zebra);
+                      --bs-table-hover-color: var(--c-text); --bs-table-hover-bg: var(--c-border);
+                      --bs-table-border-color: var(--c-border); }
+        /* Koyu temada rozetler ters çevrilir: marka lacivertli dolgu koyu kart
+           üstünde kayboluyordu (1.11:1), açık dolgu + koyu metin okunur kalır. */
+        [data-bs-theme="dark"] .badge.bg-primary {
+            --bs-primary-rgb: 86,216,204; --bs-badge-color: var(--c-brand); color: var(--c-brand);
+        }
+        [data-bs-theme="dark"] .badge.bg-dark {
+            --bs-dark-rgb: 244,241,235; --bs-badge-color: var(--c-brand); color: var(--c-brand);
+        }
+        .progress   { --bs-progress-bg: var(--c-border-2); }
+        .btn-outline-primary {
+            --bs-btn-color: var(--c-brand); --bs-btn-border-color: var(--c-brand);
+            --bs-btn-hover-color: var(--c-on-brand); --bs-btn-hover-bg: var(--c-brand);
+            --bs-btn-hover-border-color: var(--c-brand);
+            --bs-btn-active-color: var(--c-on-brand); --bs-btn-active-bg: var(--c-brand);
+            --bs-btn-active-border-color: var(--c-brand);
+        }
+        [data-bs-theme="dark"] .btn-outline-primary {
+            --bs-btn-color: var(--c-kis-2); --bs-btn-border-color: var(--c-kis-2);
+            --bs-btn-hover-bg: var(--c-kis-2); --bs-btn-hover-color: var(--c-brand);
+            --bs-btn-hover-border-color: var(--c-kis-2);
+        }
+        .btn-outline-warning {
+            --bs-btn-color: var(--c-yaz-2); --bs-btn-border-color: var(--c-yaz-2);
+            --bs-btn-hover-color: var(--c-brand); --bs-btn-hover-bg: var(--c-yaz-2);
+            --bs-btn-hover-border-color: var(--c-yaz-2);
+        }
+        .btn-outline-secondary {
+            --bs-btn-color: var(--c-text); --bs-btn-border-color: var(--c-border-2);
+            --bs-btn-hover-color: var(--c-on-brand); --bs-btn-hover-bg: var(--c-brand);
+            --bs-btn-hover-border-color: var(--c-brand);
+            --bs-btn-active-color: var(--c-on-brand); --bs-btn-active-bg: var(--c-brand);
+            --bs-btn-active-border-color: var(--c-brand);
+        }
+        .btn-outline-light {
+            --bs-btn-color: var(--c-on-brand); --bs-btn-border-color: rgba(244,241,235,0.45);
+            --bs-btn-hover-color: var(--c-brand); --bs-btn-hover-bg: var(--c-on-brand);
+            --bs-btn-hover-border-color: var(--c-on-brand);
+        }
         body {
             transition: background-color 0.3s, color 0.3s;
             padding-top: 20px;
@@ -104,6 +163,9 @@
             box-shadow: 0 4px 6px var(--c-shadow);
         }
         .header-rko { background-color: var(--c-brand); color: white; }
+        /* Koyu temada sayfa zemini de lacivert; başlık bandı kaybolmasın diye
+           marka bir ton açılır (beyaz metinle 4.5:1 üstünde kalır). */
+        [data-bs-theme="dark"] .header-rko { background-color: #4A6FA5; }
         .header-teachers { background-color: var(--c-accent); color: white; }
         .total-row {
             font-weight: bold;
@@ -193,9 +255,9 @@
                     <span class="fw-medium">${program.name}</span>
                     <div class="d-flex align-items-center">
                         ${totalCount > 0 ? `
-                        <div class="me-3 text-end" style="font-size: 0.7rem; line-height: 1.25; opacity: 0.85;">
-                            <div class="text-success">Yeni: <strong>${newCount}</strong> <span class="text-muted">(%${newPercent})</span></div>
-                            <div class="text-secondary">Eski: <strong>${oldCount}</strong> <span class="text-muted">(%${oldPercent})</span></div>${bursluBlock}
+                        <div class="me-3 text-end" style="font-size: 0.7rem; line-height: 1.25;">
+                            <div style="color: var(--c-ok-text);">Yeni: <strong>${newCount}</strong> <span class="text-muted">(%${newPercent})</span></div>
+                            <div style="color: var(--c-ink-soft);">Eski: <strong>${oldCount}</strong> <span class="text-muted">(%${oldPercent})</span></div>${bursluBlock}
                         </div>` : ''}
                         <span class="badge bg-primary rounded-pill" style="min-width: 40px;">${totalCount}</span>
                     </div>
