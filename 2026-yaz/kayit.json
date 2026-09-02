@@ -31,9 +31,5 @@
       { "name": "Ufuk Kucuk", "arrived": 1, "total": 2 },
       { "name": "Seminur Okan", "arrived": 11, "total": 12 },
       { "name": "Vehbi Canarslan", "arrived": 1, "total": 11 }
-    ],
-    "ris": [
-      { "name": "Islam 101", "count": 0 },
-      { "name": "Quran in Modern Times", "count": 0 }
     ]
 }

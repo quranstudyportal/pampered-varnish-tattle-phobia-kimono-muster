@@ -1,4 +1,4 @@
-# RKO & RIS — Kayıt Takip
+# RKO — Kuran Okulu Kayıt Takip
 
 Dönem bazlı kayıt takip dashboard'u.
 

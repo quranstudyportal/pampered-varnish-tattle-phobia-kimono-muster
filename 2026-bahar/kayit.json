@@ -25,10 +25,5 @@
       { "name": "Rahime Çiğdem", "arrived": 18, "total": 25 },
       { "name": "Seminur Okan", "arrived": 11, "total": 13 },
       { "name": "Vehbi Canarslan", "arrived": 7, "total": 13 }
-    ],
-    "ris": [
-      { "name": "Islam 101", "count": 0 },
-      { "name": "Ilm al-Hal", "count": 8, "new": 8 },
-      { "name": "Quran in Modern Times", "count": 0 }
     ]
 }
