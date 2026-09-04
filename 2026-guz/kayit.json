@@ -1,7 +1,7 @@
 {
     "rko": [
       { "name": "Kuran Tilaveti (Çocuklar)", "count": 158, "new": 56, "burslu": 49 },
-      { "name": "Kişiye Özgü Dersler", "count": 46, "new": 16 },
+      { "name": "Kişiye Özgü Dersler", "count": 47, "new": 16 },
       { "name": "One on One Quran Classes", "count": 2, "new": 2 },
       { "name": "Çocuklar için Kuran Arapçası", "count": 0, "new": 0 },
       { "name": "Kuran Arapçası", "count": 40, "new": 0 }
@@ -19,7 +19,7 @@
       { "name": "Hatice Aktaş", "arrived": 5, "total": 7 },
       { "name": "Leyla Kurt", "arrived": 1, "total": 2 },
       { "name": "Meryem Erguvan", "arrived": 4, "total": 10 },
-      { "name": "Necmiye Koç", "arrived": 4, "total": 6 },
+      { "name": "Necmiye Koç", "arrived": 5, "total": 6 },
       { "name": "Nilüfer Üner", "arrived": 3, "total": 11 },
       { "name": "Nur Demir", "arrived": 10, "total": 21 },
       { "name": "Rahime Çiğdem", "arrived": 17, "total": 24 },
