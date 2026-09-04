@@ -1,7 +1,7 @@
 {
     "rko": [
-      { "name": "Kuran Tilaveti (Çocuklar)", "count": 150, "new": 52, "burslu": 46 },
-      { "name": "Kişiye Özgü Dersler", "count": 43, "new": 15 },
+      { "name": "Kuran Tilaveti (Çocuklar)", "count": 158, "new": 56, "burslu": 49 },
+      { "name": "Kişiye Özgü Dersler", "count": 46, "new": 16 },
       { "name": "One on One Quran Classes", "count": 2, "new": 2 },
       { "name": "Çocuklar için Kuran Arapçası", "count": 0, "new": 0 },
       { "name": "Kuran Arapçası", "count": 40, "new": 0 }
@@ -11,11 +11,11 @@
       { "name": "Ahmet Selim Demir", "arrived": 11, "total": 31 },
       { "name": "Bahar Demir", "arrived": 6, "total": 13 },
       { "name": "Bekir İnal", "arrived": 6, "total": 9 },
-      { "name": "Cafer Aykut", "arrived": 4, "total": 22 },
-      { "name": "Dua Boztaş", "arrived": 2, "total": 3 },
+      { "name": "Cafer Aykut", "arrived": 5, "total": 22 },
+      { "name": "Dua Boztaş", "arrived": 3, "total": 3 },
       { "name": "Emrehan Sağın", "arrived": 0, "total": 2 },
       { "name": "Esmanur Çelebi", "arrived": 0, "total": 1 },
-      { "name": "Güllü Çam", "arrived": 17, "total": 22 },
+      { "name": "Güllü Çam", "arrived": 18, "total": 22 },
       { "name": "Hatice Aktaş", "arrived": 5, "total": 7 },
       { "name": "Leyla Kurt", "arrived": 1, "total": 2 },
       { "name": "Meryem Erguvan", "arrived": 4, "total": 10 },
