@@ -21,6 +21,8 @@
             --c-warn:         #B57F24;   /* yüzde 25–70 */
             --c-bad:          #D9644A;   /* yüzde <25 */
             --c-scholar:      #8A5E12;   /* burslu satırı */
+            --c-ongoing:      #A9B0BE;   /* dersi süren öğrenci — nötr gri dilim */
+            --c-ongoing-text: #2E3648;   /* gri dilim ve not satırı üstündeki metin */
 
             --c-bg:           #F4F1EB;   /* sayfa zemini */
             --c-surface:      #FAF9F6;   /* kart zemini */
@@ -78,6 +80,8 @@
             --c-zebra:     rgba(244,241,235,0.08);
             --c-ink-soft:  rgba(244,241,235,0.55);
             --c-scholar:   #F4C430;
+            --c-ongoing:      #6E7789;
+            --c-ongoing-text: #F4F1EB;
             --c-bahar-bg: #2A3328; --c-bahar-fg: #C5D098;
             --c-yaz-bg:   #3A2A0C; --c-yaz-fg:   #F4C430;
             --c-guz-bg:   #3A241A; --c-guz-fg:   #F0A57D;
@@ -167,6 +171,28 @@
            marka bir ton açılır (beyaz metinle 4.5:1 üstünde kalır). */
         [data-bs-theme="dark"] .header-rko { background-color: #4A6FA5; }
         .header-teachers { background-color: var(--c-accent); color: white; }
+        /* ── DEVAM EDEN DERS ──────────────────────────────────────────
+           Kayıt döneminde dersi süren öğrenci yeni kayıt açamaz; bu yüzden
+           "gelmedi" sayılmaz. Barda gelenin yanına nötr gri dilim olarak
+           yığılır, çatı yüzde ikisinin toplamıdır. */
+        .bar-ongoing { background-color: var(--c-ongoing); color: var(--c-ongoing-text); }
+        .pct-roof { font-size: 0.72rem; font-weight: 700; min-width: 44px; text-align: right; }
+        .ongoing-note { font-size: 0.68rem; line-height: 1.2; color: var(--c-ongoing-text); opacity: 0.8; }
+        .teacher-legend { font-size: 0.68rem; opacity: 0.9; }
+        .lg-dot { display: inline-block; width: 8px; height: 8px; border-radius: 2px; margin: 0 4px 0 10px; }
+        .lg-dot:first-child { margin-left: 0; }
+        .lg-arrived { background-color: var(--c-ok); }
+        .lg-ongoing { background-color: var(--c-ongoing); }
+        /* Satır yüksekliğini kompakt tutar: iki satırlık sayı hücresi ve
+           bar aynı yükseklikte kalsın. */
+        #teachers-list > tr > td { padding-top: 0.4rem; padding-bottom: 0.4rem; vertical-align: middle; }
+        /* Dar ekranda bar birkaç yüz piksele iner; dilim etiketleri kırpılır.
+           Etiketler gizlenir, bilgi kaybı olmaz: sayı hücresi gelen/toplam ve
+           devam eden ders sayısını, sağdaki çatı yüzde de toplamı taşır. */
+        @media (max-width: 575.98px) {
+            .progress-bar { font-size: 0; }
+            .pct-roof { min-width: 34px; font-size: 0.68rem; }
+        }
         .total-row {
             font-weight: bold;
             background-color: var(--c-zebra) !important;
@@ -202,7 +228,11 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header header-teachers text-center">
-                    <h4>Öğretmen Kayıt Durumu</h4>
+                    <h4 class="mb-1">Öğretmen Kayıt Durumu</h4>
+                    <div class="teacher-legend">
+                        <span class="lg-dot lg-arrived"></span>Gelen
+                        <span class="lg-dot lg-ongoing"></span>Devam eden ders
+                    </div>
                 </div>
                 <div class="card-body p-0">
                     <table class="table table-striped table-hover mb-0 text-center">
@@ -271,6 +301,30 @@
         listContainer.innerHTML = htmlContent;
     }
 
+    // Bir öğretmenin bar hücresi. Gelen (eşiğe göre renkli) + devam eden ders
+    // (gri) dilimleri yığılır; sağdaki çatı yüzde ikisinin toplamıdır.
+    // Eşik rengi de çatı yüzdeden hesaplanır: dersi süren öğrenci öğretmenin
+    // başarısızlığı değildir, bu yüzden onu kırmızıya düşürmez.
+    function teacherBarCell(arrived, ongoing, total) {
+        const aPct = total > 0 ? (arrived / total) * 100 : 0;
+        const oPct = total > 0 ? (ongoing / total) * 100 : 0;
+        const cPct = aPct + oPct;
+        const barColor = cPct < 25 ? 'bg-danger' : (cPct < 70 ? 'bg-warning text-dark' : 'bg-success');
+        // Dar dilimde yazı taşar; etiket yalnızca sığdığında basılır, değer
+        // her hâlükârda title olarak durur.
+        const label = (pct) => pct >= 14 ? `%${Math.round(pct)}` : '';
+        return `
+            <div class="d-flex align-items-center gap-2">
+                <div class="progress flex-grow-1" style="height: 18px;">
+                    <div class="progress-bar ${barColor}" role="progressbar" style="width: ${aPct}%"
+                         title="Gelen: ${arrived} (%${Math.round(aPct)})">${label(aPct)}</div>
+                    <div class="progress-bar bar-ongoing" role="progressbar" style="width: ${oPct}%"
+                         title="Devam eden ders: ${ongoing} (%${Math.round(oPct)})">${label(oPct)}</div>
+                </div>
+                <span class="pct-roof" title="Gelen + devam eden">%${Math.round(cPct)}</span>
+            </div>`;
+    }
+
     function renderTeachersTable(teacherData) {
         const tableBody = document.getElementById('teachers-list');
         if (!teacherData) {
@@ -278,30 +332,36 @@
             return;
         }
         let totalArrived = 0;
+        let totalOngoing = 0;
         let totalPossible = 0;
         let htmlContent = "";
         teacherData.forEach(teacher => {
-            totalArrived += teacher.arrived;
-            totalPossible += teacher.total;
-            let percentage = teacher.total > 0 ? ((teacher.arrived / teacher.total) * 100).toFixed(1) : 0;
-            let badgeColor = percentage < 25 ? 'bg-danger' : (percentage < 70 ? 'bg-warning text-dark' : 'bg-success');
+            const total   = teacher.total   || 0;
+            const arrived = teacher.arrived || 0;
+            // "ongoing" alanı olmayan dönemlerde 0; gelenle birlikte toplamı
+            // asla aşamaz.
+            const ongoing = Math.min(teacher.ongoing || 0, Math.max(total - arrived, 0));
+            totalArrived  += arrived;
+            totalOngoing  += ongoing;
+            totalPossible += total;
             htmlContent += `
                 <tr>
                     <td class="text-start ps-4">${teacher.name}</td>
-                    <td>${teacher.arrived} / ${teacher.total}</td>
                     <td>
-                        <div class="progress" style="height: 20px;">
-                            <div class="progress-bar ${badgeColor}" role="progressbar" style="width: ${percentage}%">%${percentage}</div>
-                        </div>
+                        <div>${arrived} / ${total}</div>
+                        ${ongoing > 0 ? `<div class="ongoing-note">Devam eden ders: ${ongoing}</div>` : ''}
                     </td>
+                    <td>${teacherBarCell(arrived, ongoing, total)}</td>
                 </tr>`;
         });
-        let totalPercentage = totalPossible > 0 ? ((totalArrived / totalPossible) * 100).toFixed(1) : 0;
         htmlContent += `
             <tr class="total-row">
                 <td class="text-start ps-4">GENEL TOPLAM</td>
-                <td><strong>${totalArrived} / ${totalPossible}</strong></td>
-                <td><strong>%${totalPercentage}</strong></td>
+                <td>
+                    <div><strong>${totalArrived} / ${totalPossible}</strong></div>
+                    ${totalOngoing > 0 ? `<div class="ongoing-note">Devam eden ders: ${totalOngoing}</div>` : ''}
+                </td>
+                <td>${teacherBarCell(totalArrived, totalOngoing, totalPossible)}</td>
             </tr>`;
         tableBody.innerHTML = htmlContent;
     }
